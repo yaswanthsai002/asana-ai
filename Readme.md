@@ -17,8 +17,6 @@ The AsanaAI application is a Virtual Yoga Asana Assistant that uses Machine Lear
 
 <b><u><i><Note:></u></b> If anyone uses a Linux distribution like ubuntu they have to install the libraries or packages mentioned in Aptfile using command " sudo apt-get update && sudo apt-get install -y $(cat Aptfile)"</i>
 
-[![Repo Card](https://github-readme-stats.vercel.app/api/pin/?username=<Yaswanthsai002>&repo=<Asana-AI>)](https://github.com/<Yaswanthsai002>/<Asana-AI>)
-
 ## <u>Stages of the Application</u>:
 
 ### 1) <i>Data Collection</i>
