@@ -1,0 +1,168 @@
+{% load static %}
+
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Level Selection</title>
+  <link rel="stylesheet" href="{% static 'css/nav.css' %}">
+  <link rel="icon" href="{% static 'images/Monk-logo.png' %}">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+    crossorigin="anonymous"></script>
+
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+    integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+    crossorigin="anonymous"></script>
+
+  <!-- <script>
+      // Funstion to log out the user rather than staying on the same page.
+      $(function () {
+        if (window.history && window.history.pushState) {
+          window.history.pushState('forward', '', window.location.href);
+
+          $(window).on('popstate', function (event) {
+            event.preventDefault();
+            window.history.pushState('forward', '', window.location.href);
+            window.location.href = '{% url "signout" %}'; // replace this with your logout URL
+          });
+        }
+      });
+
+    </script> -->
+
+  <script>
+
+    // Function to stay on the same page rather than logging out.
+
+    $(function () {
+
+      if (window.history && window.history.pushState) {
+        window.history.pushState('forward', '', window.location.href);
+
+        $(window).on('popstate', function (e) {
+          window.history.pushState('forward', '', window.location.href);
+          e.preventDefault();
+        });
+      }
+    });  
+  </script>
+
+  <style>
+    .card {
+      border-radius: 25px;
+      border: 2px solid black;
+    }
+
+    .card img {
+      border-radius: 25%;
+      width: 200px;
+      height: 200px;
+    }
+
+    .card .btn {
+      border-radius: 25px;
+    }
+
+    .card-text,
+    .card-title {
+      color: black;
+    }
+
+    .nav-link {
+      display: inline-block;
+    }
+
+    .img,
+    .btn {
+      max-width: 100%;
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="navbar">
+    <a href="{% url 'blog' %}" class="anch">
+      <img class="logo" src="{% static 'images/Myproject-2.png' %}" alt="Monk-logo"></a>
+    <div class="watermark1">
+      <a href="{% url 'blog' %}" class="anch">
+        <img src="{% static 'images/watermark/watermark (6).png' %}" class="watermark" alt="">
+        <img src="{% static 'images/watermark/watermark (7).png' %}" class="watermark" alt="">
+        <img src="{% static 'images/watermark/watermark (8).png' %}" class="watermark" alt="">
+        <img src="{% static 'images/watermark/watermark (5).png' %}" class="watermark2" alt="">
+        <img src="{% static 'images/watermark/watermark (9).png' %}" class="watermark" alt="">
+        <img src="{% static 'images/watermark/watermark (10).png' %}" class="watermark" alt="">
+        <img src="{% static 'images/watermark/watermark (11).png' %}" class="watermark" alt="">
+      </a>
+    </div>
+
+    <div class="nav">
+      <a class="nav-link" href="{% url 'levelselection' %}">Home</a>
+      <a class="nav-link" href="{% url 'profile' %}">Profile</a>
+      <a class="nav-link" href="{% url 'signout' %}">SignOut</a>
+    </div>
+  </nav>
+  <div class="container mt-3 mb-3">
+    {% if messages %}
+    {% for message in messages %}
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+      {{ message }}
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    {% endfor %}
+    {% endif %}
+    <h1 class="text-center mt-3">Level Selection</h1>
+    <div class="row justify-content-center">
+      <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-12 col-sm-12 mt-3">
+        <div class="card mt-2">
+          <div class="card-body text-center">
+            <h2 class="card-title">Beginner</h2>
+            <p class="card-text">These levels are suitable for those who are new to yoga and are looking to build a
+              solid foundation in the practice.</p>
+            <img src="{% static 'images/warrior1.jpg' %}" alt="Beginner Yoga Image" width="300px" height="300px"
+              class="mx-auto d-block">
+            <div class="text-center mt-4">
+              <a href="{% url 'beginner' %}?level=beginner" class="btn btn-primary">Select</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-12 col-sm-12 mt-3">
+        <div class="card mt-2">
+          <div class="card-body text-center">
+            <h2 class="card-title">Intermediate</h2>
+            <p class="card-text">These levels are suitable for those who have a good foundation in yoga and are looking
+              for next level.</p>
+            <img src="{% static 'images/plank.jpg' %}" alt="Intermediate Yoga Image" width="300px" height="300px"
+              class="mx-auto d-block">
+            <div class="text-center mt-4">
+              <a href="{% url 'intermediate' %}?level=intermediate" class="btn btn-primary">Select</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-12 col-sm-12 mt-3 mb-3">
+        <div class="card mt-2">
+          <div class="card-body text-center">
+            <h2 class="card-title">Advanced</h2>
+            <p class="card-text">These levels are suitable for experienced yogis who are looking for a challenging and
+              advanced practice.</p>
+            <img src="{% static 'images/triangle.jpg' %}" alt="Advanced Yoga Image" width="300px" height="300px"
+              class="mx-auto d-block">
+            <div class="text-center mt-4">
+              <a href="{% url 'advanced' %}?level=advanced" class="btn btn-primary">Select</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

@@ -1,0 +1,231 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup</title>
+    <link rel="stylesheet" href="{% static 'css/nav.css' %}">
+    <link rel="icon" href="{% static 'images/Monk-logo.png' %}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+        crossorigin="anonymous"></script>
+    <script src="../static/js/signup.js"></script>
+    <style>
+        .container {
+            padding: 1.5rem 8rem;
+        }
+
+        form {
+            padding: 1rem;
+        }
+
+        .firstname,
+        .lastname {
+            display: inline-block;
+            width: 45%;
+            margin-bottom: 0.5rem;
+        }
+
+        .lastname {
+            margin-left: 5%;
+        }
+
+        .row {
+            justify-content: center;
+            box-shadow: 0px 0px 25px black;
+            border-radius: 25px;
+        }
+
+        .img {
+            float: right;
+            height: 100%;
+            width: 100%;
+            border-radius: 25px;
+            border-top-right-radius: 0%;
+            border-bottom-right-radius: 0%;
+        }
+
+        @media only screen and (width<768px) {
+
+            .container {
+                padding: 0%;
+            }
+
+            .form-check {
+                width: 100%;
+            }
+
+            .container {
+                margin-bottom: 10%;
+            }
+
+            .watermark {
+                display: none;
+            }
+
+            .navbar {
+                display: flex;
+                flex-direction: column;
+            }
+
+            .nav-link {
+                display: block;
+                width: 100%;
+                text-align: center;
+            }
+
+            .firstname,
+            .lastname {
+                display: block;
+                width: 100%;
+            }
+
+            .lastname {
+                margin-left: 0%;
+            }
+
+            .img {
+                border-bottom-left-radius: 0%;
+                border-bottom-right-radius: 0%;
+                border-top-right-radius: 25px;
+            }
+        }
+
+        @media only screen and (width>600px) and (width<=1000px) {
+            .container {
+                padding: 0%;
+            }
+
+            .watermark {
+                display: none;
+            }
+
+            .firstname,
+            .lastname {
+                display: block;
+                width: 100%;
+            }
+
+            .lastname {
+                margin-left: 0%;
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+    <nav class="navbar">
+        <a href="{% url 'blog' %}" class="anch">
+            <img class="logo" src="{% static 'images/Myproject-2.png' %}" alt="Monk-logo"></a>
+        <div class="watermark1">
+            <a href="{% url 'blog' %}" class="anch">
+                <img src="{% static 'images/watermark/watermark (6).png' %}" class="watermark" alt="">
+                <img src="{% static 'images/watermark/watermark (7).png' %}" class="watermark" alt="">
+                <img src="{% static 'images/watermark/watermark (8).png' %}" class="watermark" alt="">
+                <img src="{% static 'images/watermark/watermark (5).png' %}" class="watermark2" alt="">
+                <img src="{% static 'images/watermark/watermark (9).png' %}" class="watermark" alt="">
+                <img src="{% static 'images/watermark/watermark (10).png' %}" class="watermark" alt="">
+                <img src="{% static 'images/watermark/watermark (11).png' %}" class="watermark" alt="">
+            </a>
+        </div>
+
+        <div class="nav">
+            <a class="nav-link" href="{% url 'blog' %}">Home</a>
+            <a class="nav-link" href="{% url 'user_signup' %}">SignUp</a> <a href="{% url 'user_signin' %}"
+                class="nav-link">SignIn</a>
+        </div>
+    </nav>
+    <div class="container mt-4">
+        {% if messages %}
+        {% for message in messages %}
+        {% if message.tags == "error" %}
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            {{ message }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        {% else %}
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            {{ message }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        {% endif %}
+        {% endfor %}
+        {% endif %}
+        <div class="row no-gutters">
+            <div class="col-md-6 col-sm-12 img-container">
+                <img src="{% static 'images/Monk-logo.png' %}" alt="Monk-logo" class="img">
+            </div>
+            <div class="col-md-6 col-sm-12 form-container">
+                <form action="{% url 'user_signup' %}" method="post">
+                    {% csrf_token %}
+                    <h2 class="text-center">Sign Up</h2>
+                    <div class="form-group firstname">
+                        <label for="firstname">First Name</label>
+                        <input type="text" id="firstname" name="firstname" class="form-control"
+                            placeholder="Enter your first name" required>
+                    </div>
+                    <div class="form-group lastname">
+                        <label for="lastname">Last Name</label>
+                        <input type="text" id="lastname" name="lastname" class="form-control"
+                            placeholder="Enter your last name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="user-type">Type of User</label><br>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="user-type" id="user" value="User"
+                                required>
+                            <label class="form-check-label" for="user">User</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="user-type" id="physician"
+                                value="Physician" required>
+                            <label class="form-check-label" for="physician">Physician</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="user-type" id="nutritionist"
+                                value="Nutritionist" required>
+                            <label class="form-check-label" for="nutritionist">Nutritionist</label>
+                        </div>
+                    </div>
+                    <div class="form-group mb-2">
+                        <label for="email">Email</label>
+                        <input type="email" id="eamil" name="email" class="form-control"
+                            placeholder="Enter your email id">
+                    </div>
+                    <div class="form-group mb-2">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" name="password" class="form-control"
+                            placeholder="Enter your password">
+                    </div>
+                    <div class="form-group mb-2">
+                        <label for="password">Confirm Password</label>
+                        <input type="password" id="confirmpassword" name="confirmpassword" class="form-control"
+                            placeholder="Confirm your password">
+                    </div>
+                    <div class="text-center my-2">
+                        Already have an account? <a href="{% url 'user_signin' %}">Signin</a>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary d-block m-auto px-4">Sign Up</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

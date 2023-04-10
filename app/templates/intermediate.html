@@ -1,0 +1,116 @@
+{% load static %}
+
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Intermediate</title>
+    <link rel="stylesheet" href="{% static 'css/nav.css' %}">
+    <link rel="icon" href="{% static 'images/Monk-logo.png' %}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+        crossorigin="anonymous"></script>
+    <style>
+        .card {
+            border-radius: 25px;
+            border: 2px solid black;
+        }
+
+        .card img {
+            border-radius: 25%;
+            width: 300px;
+            height: 300px;
+        }
+
+        .card .btn {
+            border-radius: 25px;
+        }
+
+        .card-text,
+        .card-title {
+            color: black;
+        }
+
+        .nav-link {
+            display: inline-block;
+        }
+
+        .img,
+        .btn {
+            max-width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar">
+        <a href="{% url 'blog' %}" class="anch">
+            <img class="logo" src="{% static 'images/Myproject-2.png' %}" alt="Monk-logo"></a>
+        <div class="watermark1">
+            <a href="{% url 'blog' %}" class="anch">
+                <img src="{% static 'images/watermark/watermark (6).png' %}" class="watermark" alt="">
+                <img src="{% static 'images/watermark/watermark (7).png' %}" class="watermark" alt="">
+                <img src="{% static 'images/watermark/watermark (8).png' %}" class="watermark" alt="">
+                <img src="{% static 'images/watermark/watermark (5).png' %}" class="watermark2" alt="">
+                <img src="{% static 'images/watermark/watermark (9).png' %}" class="watermark" alt="">
+                <img src="{% static 'images/watermark/watermark (10).png' %}" class="watermark" alt="">
+                <img src="{% static 'images/watermark/watermark (11).png' %}" class="watermark" alt="">
+            </a>
+        </div>
+
+        <div class="nav">
+            <a class="nav-link" href="{% url 'levelselection' %}">Home</a>
+            <a class="nav-link" href="{% url 'profile' %}">Profile</a>
+            <a class="nav-link" href="{% url 'signout' %}">SignOut</a>
+        </div>
+    </nav>
+    <div class="container-fluid mt-4">
+        <h1 class="text-center mb-4">Intermediate</h1>
+        <div class="row justify-content-center">
+            <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-12 col-sm-12 h-100">
+                <div class="card mb-3">
+                    <div class="card-body text-center">
+                        <h2 class="card-title">Plank</h2>
+                        <img src="{% static 'images/plank.jpg' %}" alt="Plank Asana Image" class="mx-auto d-block img">
+                        <div class="text-center mt-4">
+                            <a href="{% url 'plank-knowledge' %}" class="btn btn-primary">Get Knowledge</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-12 col-sm-12 h-100">
+                <div class="card mb-3">
+                    <div class="card-body text-center">
+                        <h2 class="card-title">Tree</h2>
+                        <img src="{% static 'images/treepose.jpg' %}" alt="Tree Asana Image" class="mx-auto d-block img">
+                        <div class="text-center mt-4">
+                            <a href="{% url 'tree-knowledge' %}" class="btn btn-primary">Get Knowledge</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-12 col-sm-12 h-100">
+                <div class="card mb-3">
+                    <div class="card-body text-center">
+                        <h2 class="card-title">Goddess</h2>
+
+                        <img src="{% static 'images/goddess.jpg' %}" alt="Goddess Asana Image" class="mx-auto d-block img">
+                        <div class="text-center mt-4">
+                            <a href="{% url 'goddess-knowledge' %}" class="btn btn-primary">Get Knowledge</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

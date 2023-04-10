@@ -1,0 +1,193 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signin</title>
+    <link rel="stylesheet" href="{% static 'css/nav.css' %}">
+    <link rel="icon" href="{% static 'images/Monk-logo.png' %}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+        crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Martian+Mono:wght@200&display=swap" rel="stylesheet">
+    <script>
+
+        // Function to redirect to blog page.
+        $(function () {
+            if (window.history && window.history.pushState) {
+                window.history.pushState('forward', '', window.location.href);
+
+                $(window).on('popstate', function (event) {
+                    event.preventDefault();
+                    window.history.pushState('forward', '', window.location.href);
+                    window.location.href = '{% url "blog" %}'; // replace this with your logout URL
+                });
+            }
+        });
+    </script>
+    <style>
+        .container {
+            padding: 2rem 8rem;
+        }
+
+        form {
+            padding: 5rem 1rem;
+        }
+
+        .row {
+            justify-content: center;
+            box-shadow: 0px 0px 25px black;
+            border-radius: 25px;
+        }
+
+        .img-container {
+            max-width: 600px;
+            max-height: 500px;
+        }
+
+        .img {
+            float: right;
+            height: 100%;
+            width: 100%;
+            border-radius: 25px;
+            border-top-right-radius: 0%;
+            border-bottom-right-radius: 0%;
+        }
+
+        /* form {
+            padding: 15% 2%;
+            border-radius: 25px;
+        }
+
+        .form-container {
+            width: 100%;
+            height: 100%;
+        } */
+
+        @media only screen and (width<768px) {
+
+            .container {
+                margin-bottom: 10%;
+                padding: 0%;
+            }
+
+            .watermark {
+                display: none;
+            }
+
+            .navbar {
+                display: flex;
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .nav-link {
+                display: block;
+                width: 100%;
+                text-align: center;
+            }
+
+            .img {
+                border-bottom-left-radius: 0%;
+                border-bottom-right-radius: 0%;
+                border-top-right-radius: 25px;
+            }
+        }
+
+        @media only screen and (width>768px) and (width<=1000px) {
+            .watermark {
+                display: none;
+            }
+
+            .container {
+                padding: 0%;
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+    <nav class="navbar">
+        <a href="{% url 'blog' %}" class="anch">
+            <img class="logo" src="{% static 'images/Myproject-2.png' %}" alt="Monk-logo"></a>
+        <div class="watermark1">
+            <a href="{% url 'blog' %}" class="anch">
+                <img src="{% static 'images/watermark/watermark (6).png' %}" class="watermark" alt="">
+                <img src="{% static 'images/watermark/watermark (7).png' %}" class="watermark" alt="">
+                <img src="{% static 'images/watermark/watermark (8).png' %}" class="watermark" alt="">
+                <img src="{% static 'images/watermark/watermark (5).png' %}" class="watermark2" alt="">
+                <img src="{% static 'images/watermark/watermark (9).png' %}" class="watermark" alt="">
+                <img src="{% static 'images/watermark/watermark (10).png' %}" class="watermark" alt="">
+                <img src="{% static 'images/watermark/watermark (11).png' %}" class="watermark" alt="">
+            </a>
+        </div>
+
+        <div class="nav">
+            <a class="nav-link" href="{% url 'blog' %}">Home</a>
+            <a class="nav-link" href="{% url 'user_signup' %}">SignUp</a> <a href="{% url 'user_signin' %}"
+                class="nav-link">SignIn</a>
+        </div>
+    </nav>
+    <div class="container mt-5">
+        {% if messages %}
+        {% for message in messages %}
+        {% if message.tags == "error" %}
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            {{ message }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        {% else %}
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            {{ message }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        {% endif %}
+        {% endfor %}
+        {% endif %}
+        <div class="row no-gutters">
+            <div class="col-md-6 col-sm-12 img-container">
+                <img src="{% static 'images/Monk-logo.png' %}" alt="Monk-logo" class="img">
+            </div>
+            <div class="col-md-6 col-sm-12 form-container">
+                <form action="{% url 'user_signin' %}" method="post">
+                    {% csrf_token %}
+                    <h2 class="text-center">Sign In</h2>
+                    <div class="form-group">
+                        <label for="username">Email ID</label>
+                        <input type="text" id="username" name="username" class="form-control"
+                            placeholder="Enter your email id">
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" name="password" class="form-control"
+                            placeholder="Enter your password">
+                    </div>
+                    <div class="m-3 text-center">
+                        Don't have an account? <a href="{% url 'user_signup' %}">Signup</a>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary d-block m-auto px-4">Sign In</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
