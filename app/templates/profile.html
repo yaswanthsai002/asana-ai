@@ -1,0 +1,110 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+    <link rel="stylesheet" href="{% static 'css/nav.css' %}">
+    <link rel="icon" href="{% static 'images/Monk-logo.png' %}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+        crossorigin="anonymous"></script>
+    <!-- <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet"> -->
+    <style>
+        .container {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.9);
+            padding: 2%;
+            margin: 1% auto;
+            max-width: 700px;
+        }
+
+        .container h1 {
+            font-size: 36px;
+            font-weight: bold;
+            text-align: center;
+            margin-top: 20px;
+            margin-bottom: 40px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <nav class="navbar">
+        <a href="{% url 'blog' %}" class="anch">
+            <img class="logo" src="{% static 'images/Myproject-2.png' %}" alt="Monk-logo"></a>
+        <div class="watermark1">
+            <a href="{% url 'blog' %}" class="anch">
+                <img src="{% static 'images/watermark/watermark (6).png' %}" class="watermark" alt="">
+                <img src="{% static 'images/watermark/watermark (7).png' %}" class="watermark" alt="">
+                <img src="{% static 'images/watermark/watermark (8).png' %}" class="watermark" alt="">
+                <img src="{% static 'images/watermark/watermark (5).png' %}" class="watermark2" alt="">
+                <img src="{% static 'images/watermark/watermark (9).png' %}" class="watermark" alt="">
+                <img src="{% static 'images/watermark/watermark (10).png' %}" class="watermark" alt="">
+                <img src="{% static 'images/watermark/watermark (11).png' %}" class="watermark" alt="">
+            </a>
+        </div>
+
+        <div class="nav">
+            <a class="nav-link" href="{% url 'levelselection' %}">Home</a>
+            <a class="nav-link" href="{% url 'profile' %}">Profile</a>
+            <a class="nav-link" href="{% url 'signout' %}">SignOut</a>
+        </div>
+    </nav>
+    {% if messages %}
+    {% for message in messages %}
+    {% if message.tags == "error" %}
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        {{ message }}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    {% else %}
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        {{ message }}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    {% endif %}
+    {% endfor %}
+    {% endif %}
+    <div class="container">
+        <h1 class="text-center">{{ user.first_name }} {{ user.last_name }}'s Profile</h1>
+        <ul class="list-group">
+            {% if user.email %}
+            <li class="list-group-item">Email: {{ user.email }}</li>
+            {% endif %}
+            {% if user.age %}
+            <li class="list-group-item">Age(years): {{ user.age }}</li>
+            {% endif %}
+            {% if user.type_of_user %}
+            <li class="list-group-item">Type of User: {{ user.type_of_user }}</li>
+            {% endif %}
+            {% if user.gender %}
+            <li class="list-group-item">Gender: {{ user.gender }}</li>
+            {% endif %}
+            {% if user.height %}
+            <li class="list-group-item">Height(cm): {{ user.height }}</li>
+            {% endif %}
+            {% if user.weight %}
+            <li class="list-group-item">Weight(kg): {{ user.weight }}</li>
+            {% endif %}
+        </ul>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,153 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Collect Details</title>
+    <link rel="stylesheet" href="{% static 'css/nav.css' %}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+        crossorigin="anonymous"></script>
+    <link rel="icon" href="{% static 'images/Monk-logo.png' %}">
+    <style>
+        .container {
+            max-width: 400px;
+            max-height: 500px;
+            border: 2px solid black;
+            border-radius: 15px;
+            display: block;
+            margin: 3%;
+            float: right;
+            padding: 2%;
+        }
+
+        .container h1 {
+            text-align: center;
+        }
+
+        .container button {
+            display: block;
+            margin: auto;
+        }
+
+        @media (max-width<=800px) {
+            .container {
+                width: 100%;
+            }
+        }
+
+        @media only screen and (max-width: 700px) {
+            .container {
+                margin-bottom: 10%;
+            }
+
+            .watermark {
+                display: none;
+            }
+
+            .navbar {
+                display: flex;
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .nav-link {
+                display: block;
+                width: 100%;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar">
+        <a href="{% url 'blog' %}" class="anch">
+            <img class="logo" src="{% static 'images/Myproject-2.png' %}" alt="Monk-logo"></a>
+        <div class="watermark1">
+            <a href="{% url 'blog' %}" class="anch">
+                <img src="{% static 'images/watermark/watermark (6).png' %}" class="watermark" alt="">
+                <img src="{% static 'images/watermark/watermark (7).png' %}" class="watermark" alt="">
+                <img src="{% static 'images/watermark/watermark (8).png' %}" class="watermark" alt="">
+                <img src="{% static 'images/watermark/watermark (5).png' %}" class="watermark2" alt="">
+                <img src="{% static 'images/watermark/watermark (9).png' %}" class="watermark" alt="">
+                <img src="{% static 'images/watermark/watermark (10).png' %}" class="watermark" alt="">
+                <img src="{% static 'images/watermark/watermark (11).png' %}" class="watermark" alt="">
+            </a>
+        </div>
+
+        <div class="nav">
+            <a class="nav-link" href="{% url 'levelselection' %}">Home</a>
+            <a class="nav-link" href="{% url 'profile' %}">Profile</a>
+            <a class="nav-link" href="{% url 'signout' %}">SignOut</a>
+        </div>
+    </nav>
+    {% if messages %}
+    {% for message in messages %}
+    {% if message.tags == "error" %}
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        {{ message }}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    {% else %}
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        {{ message }}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    {% endif %}
+    {% endfor %}
+    {% endif %}
+    <div class="container">
+        <form action="{% url 'collect' %}" class="details" method="post">
+            {% csrf_token %}
+            <h1 class="form-title">Personal Details</h1>
+            <div class="form-group">
+                <label for="gender">Gender</label><br>
+                <div class="form-check form-check-inline">
+                    <input type="radio" class="form-check-input" id="male" required name="gender" value="Male">
+                    <label class="form-check-label" for="male">Male</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input type="radio" class="form-check-input" id="female" required name="gender" value="Female">
+                    <label class="form-check-label" for="female">Female</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input type="radio" class="form-check-input" id="other" required name="gender" value="Others">
+                    <label class="form-check-label" for="other">Other</label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="age">Age</label><br>
+                <input type="number" class="form-control" max="100" min="10" required name="age"
+                    placeholder="(in years)">
+            </div>
+            <div class="form-group">
+                <label for="height">Height</label><br>
+                <input type="number" class="form-control" name="height" placeholder="(in cm)">
+            </div>
+            <div class="form-group">
+                <label for="weight">Weight</label><br>
+                <input type="number" class="form-control" name="weight" required placeholder="(in kg)">
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+
+    </div>
+</body>
+
+</html>
