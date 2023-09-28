@@ -4,8 +4,7 @@ The AsanaAI application is a Virtual Yoga Asana Assistant that uses Machine Lear
 
 ## <u>Steps to use the application:</u>
 1. Clone the repository into the system using the command "git clone https://github.com/Yaswanthsai002/AsanaAI"
-2. Open a terminal in the folder location and create a virtual environment using the command "python -m venv \<name-of-environment\>
-"
+2. Open a terminal in the folder location and create a virtual environment using the command "python -m venv \<name-of-environment\>"
 3. Activate the environment using the command "source \<name-of-environment\>/bin/activate"
 4. Install the requirements from requirements.txt using the command "pip install requirements.txt --upgrade"
 5. Run the Data Collection.py file using the command "python app/data_collection.py"
