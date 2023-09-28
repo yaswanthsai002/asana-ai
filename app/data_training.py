@@ -5,7 +5,7 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import train_test_split, cross_val_score
 
 # Load the data
-df = pd.read_csv("app/Asana.csv")
+df = pd.read_csv("Asana.csv")
 
 # Split the data into input features (X) and target variable (y)
 X = df.iloc[:,:-1].values
@@ -36,5 +36,5 @@ accuracy = rfr.score(x_test, y_test)
 print("Random Forest Classifier : ", round(accuracy, 2))
 
 # Save the model and label encoder to a file
-with open('app/model.pkl', 'wb') as f:
+with open('model.pkl', 'wb') as f:
     pickle.dump((rfr, le), f)
