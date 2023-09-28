@@ -15,7 +15,7 @@ for p in mp_holistic.PoseLandmark:
         data.append(x + "_visibility")
 data.append("NAME_OF_THE_ASANA")
 
-path = 'app/DATASET/TRAIN'
+path = os.path.join('DATASET', 'TRAIN')
 
 landmarks = []
 
@@ -38,7 +38,7 @@ for asana in os.listdir(path):
         except Exception as e:
             print(e)
 
-file = open("app/Asana.csv","w")
+file = open("Asana.csv","w")
 writer = csv.writer(file)
 writer.writerow(data)
 writer.writerows(landmarks)
