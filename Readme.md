@@ -14,7 +14,7 @@ The AsanaAI application is a Virtual Yoga Asana Assistant that uses Machine Lear
 9. Run Django Server using the command "python manage.py runserver"
 10. Wait for the server to start and click on the link (http://127.0.0.1:8000) or copy it and paste it in the browser given in the terminal.
 
-<b><u><i><Note:></u></b> If anyone uses a Linux distribution like ubuntu they have to install the libraries or packages mentioned in Aptfile using command " sudo apt-get update && sudo apt-get install -y $(cat Aptfile)"</i>
+<b><u><i><Note:></u></b> If anyone uses a Linux distribution like ubuntu they have to install the libraries or packages mentioned in Aptfile using command "sudo apt-get update && sudo apt-get install -y $(cat Aptfile)"</i>
 
 ## <u>Stages of the Application</u>:
 
