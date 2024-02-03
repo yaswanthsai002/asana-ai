@@ -3,7 +3,7 @@
 The AsanaAI application is a Virtual Yoga Asana Assistant that uses Machine Learning and Django. The application is built using the Django framework and various Python libraries to accurately identify pre-trained Yoga asanas within the model.
 
 ## <u>Steps to use the application:</u>
-1. Clone the repository into the system using the command "git clone https://github.com/Yaswanthsai002/AsanaAI"
+1. Clone the repository into the system using the command "git clone https://github.com/yaswanthsai002/AsanaAI"
 2. Open a terminal in the folder location and create a virtual environment using the command "python -m venv <name-of-environment\>"
 3. Activate the environment using the command ".\<name-of-environment\>\Scripts/activate" (windows) or "source <name-of-environmet/>/bin/activate" (macOS or Linux)
 4. Install the requirements from requirements.txt using the command "pip install -r requirements.txt --upgrade"
