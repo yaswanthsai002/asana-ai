@@ -45,4 +45,4 @@ Final stage of the process where we use the pre-trained ML model for predicting 
 
 ![Screenshot (22)](https://user-images.githubusercontent.com/57896227/230847947-3c60a91e-5788-4711-992c-b31d66deb1d2.png)
 
-        Fig:- Machine detects the Asana (Correct way of doing)
+        Fig:- Model detecting the Asana
